@@ -29,9 +29,9 @@ definition(
     author: "KuKu",
     description: "With visible realtime energy usage status, have good energy habits and enrich your life",
     category: "SmartThings Labs",
-    iconUrl: "https://s3-ap-northeast-1.amazonaws.com/smartthings-images/appicon_enertalk%401.png",
-    iconX2Url: "https://s3-ap-northeast-1.amazonaws.com/smartthings-images/appicon_enertalk%401.png",
-    iconX3Url: "https://s3-ap-northeast-1.amazonaws.com/smartthings-images/appicon_enertalk%401.png",
+    iconUrl: "https://cdn.rawgit.com/turlvo/KuKuMeter/master/images/icon/KuKu_Meter_Icon_1x.png",
+    iconX2Url: "https://cdn.rawgit.com/turlvo/KuKuMeter/master/images/icon/KuKu_Meter_Icon_2x.png",
+    iconX3Url: "https://cdn.rawgit.com/turlvo/KuKuMeter/master/images/icon/KuKu_Meter_Icon_3x.png",
     oauth: true)
 {
     appSetting "clientId"
@@ -155,7 +155,7 @@ def initialize() {
     def d = getChildDevice(atomicState.installedDeviceInfo.id)
     if(!d) {
         log.debug "Creating Device Type Handler."
-        d = addChildDevice("turlvo", "KuKu Meter Energy Meter", atomicState.installedDeviceInfo.id, null, [name:"KuKu Meter Energy Meter", label:name])
+        d = addChildDevice("turlvo", "KuKu Meter Energy Meter", atomicState.installedDeviceInfo.id, null, [name:"KuKu Meter", label:name])
 
         pullData()
     } else {
