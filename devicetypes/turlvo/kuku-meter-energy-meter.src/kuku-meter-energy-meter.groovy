@@ -88,62 +88,346 @@ mappings {
 
 def renderhtml() {
     def html = """
-                <!DOCTYPE html>
-                <html>
-                <head lang="en"><meta charset="UTF-8">
-                <title>Encored SDK Console</title>
+<!DOCTYPE html>
+<html>
+	<head lang="en"><meta charset="UTF-8">
+		<title>Encored SDK Console</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-                </head>
+		<!-- Link Swiper's CSS -->
+		<link rel="stylesheet" href="../dist/css/swiper.min.css">
 
-                <body>
-                    <div id="card-target"></div>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
-                    <script src="https://card.enertalk.com/sdk.js"></script>
-                    <script>
+		<!-- Demo styles -->
+		<style>
+		html, body {
+			position: relative;
+			height: 100 % ;
+		}
+		body {
+			background:  # eee;
+			font - family: Helvetica Neue,
+			Helvetica,
+			Arial,
+			sans - serif;
+			font - size: 14px;
+			color:  # 000;
+			margin: 0;
+			padding: 0;
+		}
+		.swiper - container {
+			width: 100 % ;
+			height: 100 % ;
+		}
+		.swiper - slide {
+			text - align: center;
+			font - size: 18px;
+			background:  # fff;
+			/* Center slide text vertically */
+			display: -webkit - box;
+			display: -ms - flexbox;
+			display: -webkit - flex;
+			display: flex;
+			-webkit - box - pack: center;
+			-ms - flex - pack: center;
+			-webkit - justify - content: center;
+			justify - content: center;
+			-webkit - box - align: center;
+			-ms - flex - align: center;
+			-webkit - align - items: center;
+			align - items: center;
+		}
+		</style>
+	</head>
 
-                        var UI = new Encored.UI({
-                                                  env: 'production',
-                                                  category: 'home',
-                                                  iframe: false,
-                                                  version: 2
-                                                  });	
-                        UI.renderCard({
-                        cards: [
-                          {
-                            id: 'ui:h:energywatch:v1',
-                            params: {
-                              lang: 'ko'
-                            }
-                          },
-                          {
-                              id: 'ui:h:realtime:v3',
-                              params: {
-                                lang: 'ko'
-                              }
-                            },
-                                  {
-                        id: 'ui:h:neighborcomparison:v2',
-                        params: {
-                          lang: 'ko'
-                        }
-                      },
-                            {
-                        id: 'ui:h:overview:v1',
-                        params: {
-                          lang: 'ko',
-                          useDemoLabel: 1,
-                          showGuide: 1
-                        }
-                      }
-                        ],
-                        accessToken: '${parent.getAccessToken()}',
-                        target: document.querySelector('#card-target')
-                        });
-                        var cardTarget = document.querySelector('#card-target');
-                    </script>
+	<body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
+		<script src="https://card.enertalk.com/sdk.js"></script>	
 
-                </body>
-                </html>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">						 
+				<div class="swiper-slide">
+					<div id="card-target1"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [
+												{
+													id: 'ui:h:energywatch:v1',
+													params: {
+													lang: 'ko'
+													}
+												}
+											],
+											accessToken: '${parent.getAccessToken()}',
+											target: document.querySelector('#card-target1')
+											});										
+						</script>
+				</div>
+				<div class="swiper-slide">
+					<div id="card-target2"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:realtime:v3',
+													params: {
+														lang: 'ko'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target2')
+										});
+						</script>
+				</div>
+				<div class="swiper-slide">
+					<div id="card-target3"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:alarm:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 1
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target3')
+										});
+						</script>
+				</div>				
+				<div class="swiper-slide">
+					<div id="card-target4"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:dashboard:v1',
+													params: {
+													  lang: 'ko',
+													  displayUnit: 'watt'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target4')
+										});
+						</script>
+				</div>
+				<div class="swiper-slide">
+					<div id="card-target5"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:neighborcomparison:v2',
+													params: {
+														lang: 'ko'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target5')
+										});
+						</script>
+				</div>
+				<div class="swiper-slide">
+
+					<div id="card-target6"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:planmain:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0,
+														displayUnit: 'watt',
+														disableChangeButton: 1
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target6')
+										});
+						</script>
+				</div>
+				<div class="swiper-slide">
+					<div id="card-target7"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:realtime:v4',
+													params: {
+														lang: 'ko'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target7')
+										});
+						</script>
+				</div>
+				<div class="swiper-slide">
+					<div id="card-target8"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:stepchart:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target8')
+										});
+						</script>
+				</div>
+				<div class="swiper-slide">
+					<div id="card-target9"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:thismonth:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0,
+														displayUnit: 'watt'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target9')
+										});
+						</script>
+				</div>
+				<div class="swiper-slide">
+					<div id="card-target10"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:thismonthchart:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0,
+														displayUnit: 'watt'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target10')
+										});
+						</script>
+				</div>
+				<div class="swiper-slide">
+					<div id="card-target11"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:usagekeepingbook:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0,
+														displayUnit: 'watt',
+														showLayer: 1
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target11')
+										});
+						</script>
+				</div>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+		</div>
+		
+		<script>
+			var swiper = new Swiper('.swiper-container', {
+                                    pagination: '.swiper-pagination',
+                                    paginationClickable: true,
+                                    loop: true
+                                    });
+		</script>
+	</body>
+</html>
                 """ 
     render contentType: "text/html", data: html, status: 200
 
@@ -248,4 +532,326 @@ def startPoll() {
     unschedule()
     log.debug "schedule(${settings.pollingInterval}, poll)"
     schedule(settings.pollingInterval.toInteger() * 60 + 30, poll)
+}
+
+def card1() {
+	return """
+					<div id="card-target1"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [
+												{
+													id: 'ui:h:energywatch:v1',
+													params: {
+													lang: 'ko'
+													}
+												}
+											],
+											accessToken: '${parent.getAccessToken()}',
+											target: document.querySelector('#card-target1')
+											});										
+						</script>
+				</div>
+                """
+}
+
+def card2() {
+	return """
+				<div class="swiper-slide">
+					<div id="card-target2"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:realtime:v3',
+													params: {
+														lang: 'ko'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target2')
+										});
+						</script>
+				</div>
+                """
+}
+
+def card3() {
+	return """
+				<div class="swiper-slide">
+					<div id="card-target3"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:alarm:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 1
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target3')
+										});
+						</script>
+				</div>	
+                """
+}
+
+def card4() {
+	return """
+				<div class="swiper-slide">
+					<div id="card-target4"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:dashboard:v1',
+													params: {
+													  lang: 'ko',
+													  displayUnit: 'watt'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target4')
+										});
+						</script>
+				</div>
+                """
+}
+
+def card5() {
+	return """
+				<div class="swiper-slide">
+					<div id="card-target5"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:neighborcomparison:v2',
+													params: {
+														lang: 'ko'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target5')
+										});
+						</script>
+				</div>
+                """
+}
+
+def card6() {
+	return """
+				<div class="swiper-slide">
+
+					<div id="card-target6"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:planmain:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0,
+														displayUnit: 'watt',
+														disableChangeButton: 1
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target6')
+										});
+						</script>
+				</div>
+                """
+}
+
+def card7() {
+	return """
+				<div class="swiper-slide">
+					<div id="card-target7"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:realtime:v4',
+													params: {
+														lang: 'ko'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target7')
+										});
+						</script>
+				</div>
+                """
+}
+
+def card8() {
+	return """
+				<div class="swiper-slide">
+					<div id="card-target8"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:stepchart:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target8')
+										});
+						</script>
+				</div>
+                """
+}
+
+def card9() {
+	return """
+				<div class="swiper-slide">
+					<div id="card-target9"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:thismonth:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0,
+														displayUnit: 'watt'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target9')
+										});
+						</script>
+				</div>
+                """
+}
+
+def card10() {
+	return """
+				<div class="swiper-slide">
+					<div id="card-target10"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:thismonthchart:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0,
+														displayUnit: 'watt'
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target10')
+										});
+						</script>
+				</div>
+                """
+}
+
+def card11() {
+	return """
+				<div class="swiper-slide">
+					<div id="card-target11"></div>
+						<script>
+						var UI = new Encored.UI({
+												env: 'production',
+												category: 'home',
+												iframe: false,
+												version: 2
+												});	
+						UI.renderCard({
+										cards: [									  
+												{
+													id: 'ui:h:usagekeepingbook:v1',
+													params: {
+														lang: 'ko',
+														useDemoLabel: 0,
+														displayUnit: 'watt',
+														showLayer: 1
+													}
+												}
+										],
+										accessToken: '${parent.getAccessToken()}',
+										target: document.querySelector('#card-target11')
+										});
+						</script>
+				</div>
+			</div>
+            """
 }
