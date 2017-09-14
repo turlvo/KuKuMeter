@@ -13,13 +13,14 @@
 *  for the specific language governing permissions and limitations under the License.
 *
 */
-def version() {	return "v0.0.1.700" }
+def version() {	return "v1.3.0" }
 /*
- *	09/10/2017 >>> v0.0.1.000 - Release first KuKuMeter
- *  09/10/2017 >>> v0.0.1.500 - Modified Tile view and added a 'Power Meter', 'Energy Meter' capability
- *  09/11/2017 >>> v0.0.1.600 - added 'uninstall' confirm and fixed 'refresh token' issue
- *  09/11/2017 >>> v0.0.1.650 - added Voltage, Current, Charge tile
- *  09/12/2017 >>> v0.0.1.700 - fixed issue that there is no 'charge' value when it is installed
+ *	09/10/2017 >>> v1.0.0 - Release first KuKuMeter
+ *  09/10/2017 >>> v1.1.0 - Modified Tile view and added a 'Power Meter', 'Energy Meter' capability
+ *  09/11/2017 >>> v1.1.5 - added 'uninstall' confirm and fixed 'refresh token' issue
+ *  09/11/2017 >>> v1.2.0 - added Voltage, Current, Charge tile
+ *  09/12/2017 >>> v1.2.1 - fixed issue that there is no 'charge' value when it is installed
+ *  09/14/2017 >>> v1.3.0 - added 11 graph cards
 */
 
 
@@ -132,6 +133,22 @@ def checkAccessToken() {
                     paragraph "SERIAL : ${atomicState.installedDeviceInfo.serialNumber}"
                 }
             }
+            /*
+            section("Select Info. Card :") {
+                def cardType = [ "Energy Clock",
+                                  "Real Time v3",
+                                  "Notification",
+                                  "Home",
+                                  "Neighbor Comparison",
+                                  "Usage Plan",
+                                  "Real Time v4",
+                                  "Progress Tier",
+                                  "Month Usage",
+                                  "Month Usage Chart",
+                                  "Energy Book"]
+                input name: "selectedCards", type: "enum", title: "asfa", multiple: true, options: cardType, submitOnChange: true, required: false   
+            }*/
+                            
         }
     }
 }
@@ -585,7 +602,7 @@ private connectionStatus(message) {
                 </head>
                 <body>
                 <div class="container">
-                <img class="encored" src="https://s3-ap-northeast-1.amazonaws.com/smartthings-images/appicon_enertalk.png" alt="Encored icon" />
+                <img class="encored" src="https://cdn.rawgit.com/turlvo/KuKuMeter/master/images/icon/KuKu_Meter_Icon_3x.png" alt="Encored icon" />
                 <img class="chain" src="https://s3-ap-northeast-1.amazonaws.com/smartthings-images/icon_link.svg" alt="connected device icon" />
                 <img class="smartt" src="https://s3.amazonaws.com/smartapp-icons/Partner/support/st-logo%402x.png" alt="SmartThings logo" />
                 <p>${message}</p>
