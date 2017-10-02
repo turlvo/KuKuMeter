@@ -148,273 +148,18 @@ def renderhtml() {
 		<div class="swiper-container">
 			<div class="swiper-wrapper">						 
 				<div class="swiper-slide">
-					<div id="card-target1"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [
-												{
-													id: 'ui:h:energywatch:v1',
-													params: {
-													lang: 'ko'
-													}
-												}
-											],
-											accessToken: '${parent.getAccessToken()}',
-											target: document.querySelector('#card-target1')
-											});										
-						</script>
+					${card1()}
+                    ${card2()}
+                    ${card3()}
+                    ${card4()}
+                    ${card5()}
+                    ${card6()}
+                    ${card7()}
+                    ${card8()}
+                    ${card9()}
+                    ${card10()}
+                    ${card11()}
 				</div>
-				<div class="swiper-slide">
-					<div id="card-target2"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:realtime:v3',
-													params: {
-														lang: 'ko'
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target2')
-										});
-						</script>
-				</div>
-				<div class="swiper-slide">
-					<div id="card-target3"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:alarm:v1',
-													params: {
-														lang: 'ko',
-														useDemoLabel: 1
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target3')
-										});
-						</script>
-				</div>				
-				<div class="swiper-slide">
-					<div id="card-target4"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:dashboard:v1',
-													params: {
-													  lang: 'ko',
-													  displayUnit: 'watt'
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target4')
-										});
-						</script>
-				</div>
-				<div class="swiper-slide">
-					<div id="card-target5"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:neighborcomparison:v2',
-													params: {
-														lang: 'ko'
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target5')
-										});
-						</script>
-				</div>
-				<div class="swiper-slide">
-
-					<div id="card-target6"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:planmain:v1',
-													params: {
-														lang: 'ko',
-														useDemoLabel: 0,
-														displayUnit: 'watt',
-														disableChangeButton: 1
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target6')
-										});
-						</script>
-				</div>
-				<div class="swiper-slide">
-					<div id="card-target7"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:realtime:v4',
-													params: {
-														lang: 'ko'
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target7')
-										});
-						</script>
-				</div>
-				<div class="swiper-slide">
-					<div id="card-target8"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:stepchart:v1',
-													params: {
-														lang: 'ko',
-														useDemoLabel: 0
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target8')
-										});
-						</script>
-				</div>
-				<div class="swiper-slide">
-					<div id="card-target9"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:thismonth:v1',
-													params: {
-														lang: 'ko',
-														useDemoLabel: 0,
-														displayUnit: 'watt'
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target9')
-										});
-						</script>
-				</div>
-				<div class="swiper-slide">
-					<div id="card-target10"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:thismonthchart:v1',
-													params: {
-														lang: 'ko',
-														useDemoLabel: 0,
-														displayUnit: 'watt'
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target10')
-										});
-						</script>
-				</div>
-				<div class="swiper-slide">
-					<div id="card-target11"></div>
-						<script>
-						var UI = new Encored.UI({
-												env: 'production',
-												category: 'home',
-												iframe: false,
-												version: 2
-												});	
-						UI.renderCard({
-										cards: [									  
-												{
-													id: 'ui:h:usagekeepingbook:v1',
-													params: {
-														lang: 'ko',
-														useDemoLabel: 0,
-														displayUnit: 'watt',
-														showLayer: 1
-													}
-												}
-										],
-										accessToken: '${parent.getAccessToken()}',
-										target: document.querySelector('#card-target11')
-										});
-						</script>
-				</div>
-			</div>
 			<!-- Add Pagination -->
 			<div class="swiper-pagination"></div>
 		</div>
@@ -462,11 +207,11 @@ def getLinkedApp() {
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
                 <script>
                 var ua = navigator.userAgent.toLowerCase();
-                var isAndroid = ua.indexOf("android") > -1;
-                if(!isAndroid) { 
-                \$("#st-deep-link").attr("href", "https://itunes.apple.com/kr/app/enertalk-for-home/id1024660780?mt=8");
+                if (varUA.match('android') != null) { 
+    				//안드로이드 일때 처리
+ 					\$("#st-deep-link").attr("href", "market://details?id=com.ionicframework.enertalkhome874425");
                 } else {
-                \$("#st-deep-link").attr("href", "market://details?id=com.ionicframework.enertalkhome874425");
+                	\$("#st-deep-link").attr("href", "https://itunes.apple.com/kr/app/enertalk-for-home/id1024660780?mt=8");                
                 }
                 </script>
                 """
