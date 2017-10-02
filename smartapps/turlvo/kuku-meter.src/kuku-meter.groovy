@@ -21,6 +21,7 @@ def version() {	return "v1.3.0" }
  *  09/11/2017 >>> v1.2.0 - added Voltage, Current, Charge tile
  *  09/12/2017 >>> v1.2.1 - fixed issue that there is no 'charge' value when it is installed
  *  09/14/2017 >>> v1.3.0 - added 11 graph cards
+ *  10/02/2017 >>> v1.3.1 - changed to singleInstance
 */
 
 
@@ -29,10 +30,11 @@ definition(
     namespace: "turlvo",
     author: "KuKu",
     description: "With visible realtime energy usage status, have good energy habits and enrich your life",
-    category: "SmartThings Labs",
+    category: "Convenience",
     iconUrl: "https://cdn.rawgit.com/turlvo/KuKuMeter/master/images/icon/KuKu_Meter_Icon_1x.png",
     iconX2Url: "https://cdn.rawgit.com/turlvo/KuKuMeter/master/images/icon/KuKu_Meter_Icon_2x.png",
     iconX3Url: "https://cdn.rawgit.com/turlvo/KuKuMeter/master/images/icon/KuKu_Meter_Icon_3x.png",
+    singleInstance: true,
     oauth: true)
 {
     appSetting "clientId"
