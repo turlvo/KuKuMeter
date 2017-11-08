@@ -15,6 +15,7 @@
 */
 metadata {
     definition (name: "KuKu Meter Energy Meter", namespace: "turlvo", author: "KuKu") {
+        capability "Sensor"
         capability "Power Meter"
         capability "Energy Meter"
         capability "Refresh"
