@@ -22,6 +22,7 @@ def version() {	return "v1.3.0" }
  *  09/12/2017 >>> v1.2.1 - fixed issue that there is no 'charge' value when it is installed
  *  09/14/2017 >>> v1.3.0 - added 11 graph cards
  *  10/02/2017 >>> v1.3.1 - changed to singleInstance
+ *  11/08/2017 >>> v1.3.2 - add 'Sensor' capability for adding to 'ActionTile'
 */
 
 
