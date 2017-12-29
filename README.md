@@ -1,4 +1,10 @@
 # KuKu Meter
+>KuKuMeter is a SmartApp(with DTH) that supoort to connect with Enertalk Energy Meter and SmartThings.
+
+>It works based on '[Smart Energy Service](https://github.com/SmartThingsCommunity/SmartThingsPublic/tree/master/smartapps/encored-technologies)'
+
+>With KuKuMeter, you can check Enertalk Energy Meter's status and make a Home automation as you want at the SmartThings platform.
+
 
 ## Installation
 ### 1. create Client ID and Client Secret key
