@@ -215,8 +215,10 @@ def pullData() {
 
     def d = getChildDevice(atomicState.installedDeviceInfo.id)
     
-    def now = new Date().format("yyyy MMM dd EEE h:mm:ss a", location.timeZone)
-    d?.sendEvent(name: "lastCheckin", value: now)
+    if (null != location) {
+        def now = new Date().format("yyyy MMM dd EEE h:mm:ss a", location.timeZone)
+        d?.sendEvent(name: "lastCheckin", value: now)
+    }
     
     def TotalUsage = getBillingUsage(atomicState.installedDeviceInfo.id)
     log.debug "pullData>> TotalUsage : $TotalUsage"
