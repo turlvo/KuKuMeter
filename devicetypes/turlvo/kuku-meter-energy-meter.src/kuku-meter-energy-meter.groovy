@@ -78,7 +78,7 @@ metadata {
 
         htmlTile(name:"graphHTML", action: "renderhtml", width: 6, height: 13, whitelist: ["card.enertalk.com", "cdnjs.cloudflare.com", "cdn.rawgit.com"]){}
         main (["view"])
-        details (["month", "real", "current", "voltage", "charge", "refresh"])
+        details (["month", "real", "current", "voltage", "charge", "refresh", "deepLink", "graphHTML"])
     }
 }
 
