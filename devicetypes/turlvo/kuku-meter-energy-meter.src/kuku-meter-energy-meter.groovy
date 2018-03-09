@@ -78,7 +78,7 @@ metadata {
 
         htmlTile(name:"graphHTML", action: "renderhtml", width: 6, height: 13, whitelist: ["card.enertalk.com", "cdnjs.cloudflare.com", "cdn.rawgit.com"]){}
         main (["view"])
-        details (["month", "real", "current", "voltage", "charge", "refresh", "deepLink", "graphHTML"])
+        details (["month", "real", "current", "voltage", "charge", "refresh"])
     }
 }
 
@@ -234,8 +234,7 @@ def initialize() {
     // Notify health check about this device with timeout interval equal to 5 failed update requests
     // (add 30 seconds so we don't collide with the 5th request in case that succeeds)
     if (settings.pollingInterval == null || settings.pollingInterval == "" ) settings.pollingInterval = 5
-    def healthCheckInterval = settings.pollingInterval.toInteger() * 60 + 30
-    sendEvent(name: "checkInterval", value: healthCheckInterval, data: [protocol: "cloud", hubHardwareId: 'xxx'], displayed: false)
+
     poll()																													
     startPoll()
 
@@ -274,10 +273,10 @@ def updated() {
 }
 
 def startPoll() {
-    log.debug "startPoll"
-    unschedule()
-    log.debug "schedule(${settings.pollingInterval}, poll)"
-    schedule(settings.pollingInterval.toInteger() * 60 + 30, poll)
+	def healthCheckInterval = "0/${settings.pollingInterval}"
+    log.debug "startPoll $healthCheckInterval"
+    schedule("0 $healthCheckInterval * * * ?", poll)
+
 }
 
 def card1() {
