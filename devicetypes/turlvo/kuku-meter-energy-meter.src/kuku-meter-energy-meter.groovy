@@ -14,7 +14,7 @@
 *
 */
 metadata {
-    definition (name: "KuKu Meter Energy Meter", namespace: "turlvo", author: "KuKu") {
+    definition (name: "KuKu Meter Energy Meter", namespace: "turlvo", author: "KuKu", ocfDeviceType: "x.com.st.d.energymeter") {
         capability "Sensor"
         capability "Power Meter"
         capability "Energy Meter"
