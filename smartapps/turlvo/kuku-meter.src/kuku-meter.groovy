@@ -23,6 +23,7 @@ def version() {	return "v1.3.0" }
  *  09/14/2017 >>> v1.3.0 - added 11 graph cards
  *  10/02/2017 >>> v1.3.1 - changed to singleInstance
  *  11/08/2017 >>> v1.3.2 - add 'Sensor' capability for adding to 'ActionTile'
+ *  11/10/2018 >>> v1.3.3 - add reinstall function
 */
 
 
@@ -45,8 +46,9 @@ definition(
 
 
 preferences {
-	page(name: "checkAccessToken")
-    page(name: "mainPage")    
+    page(name: "installPage")
+    page(name: "mainPage")  
+    page(name: "reinstall")
 }
 
 cards {
@@ -79,64 +81,31 @@ mappings {
 }
 
 // First page will be shown
-def checkAccessToken() {
-    log.debug "mainPage>> Staring the installation"
-
-    /* Select API server version */    
-    atomicState.env_mode ="prod"
-
-    def lang = clientLocale?.language
-
-    /* getting language settings of user's device.  */
-    atomicState.language = "ko"
-
-    /* create tanslation for descriptive and informative strings that can be seen by users. */
-    if (!state.languageString) {
-        createLocaleStrings() 
+def mainPage() {
+    if (!atomicState.isInstalled) {
+        loadInitValue()
     }
 
-    if (!atomicState.encoredAccessToken) {
-        if (!state.accessToken) {
-            log.debug "checkAccessToken>> SmartThings Access Token does not exist."
-            createAccessToken()
+    return dynamicPage(name: "mainPage", title: "", install: true, uninstall: true,refreshInterval: interval) {
+        section("User Info. :") {
+            paragraph "EMAIL : ${atomicState.userInfo.email}"
         }
 
-        def redirectUrl = "https://graph.api.smartthings.com/oauth/initialize?appId=${app.id}&access_token=${state.accessToken}&apiServerUrl=${getApiServerUrl()}"
+        section("Site Info :") {                    
+            paragraph "Desc : ${atomicState.installedSiteInfo.description}"
+        }
 
-        /* These lines will start the OAuth process.\n*/
-        log.debug "checkAccessToken>> Start OAuth request: " + redirectUrl
-        return dynamicPage(name: "checkAccessToken", nextPage:null, uninstall: true) {
-            section{
-                paragraph state.languageString."${atomicState.language}".desc1
-                href(title: state.languageString."${atomicState.language}".main,
-                     description: state.languageString."${atomicState.language}".desc2,
-                     required: true,
-                     style:"embedded",
-                     url: redirectUrl)
+        section("Device Info :") {
+            if (atomicState.installedDeviceInfo.name) {
+                paragraph "NAME : ${atomicState.installedDeviceInfo.name}"
+            } else {
+                paragraph "SERIAL : ${atomicState.installedDeviceInfo.serialNumber}"
             }
         }
-    } else {        
-        if (!atomicState.isInstalled) {
-    		loadInitValue()
+        section() {
+            href "reinstall", title: "Reinstall", description: "If you have a problem, just reinstall instead of uninstall"
         }
-        
-        return dynamicPage(name: "mainPage", title: "", install: true, uninstall: true,refreshInterval: interval) {
-            section("User Info. :") {
-            	paragraph "EMAIL : ${atomicState.userInfo.email}"
-            }
-
-            section("Site Info :") {                    
-                paragraph "Desc : ${atomicState.installedSiteInfo.description}"
-            }
-
-            section("Device Info :") {
-                if (atomicState.installedDeviceInfo.name) {
-                    paragraph "NAME : ${atomicState.installedDeviceInfo.name}"
-                } else {
-                    paragraph "SERIAL : ${atomicState.installedDeviceInfo.serialNumber}"
-                }
-            }
-            /*
+        /*
             section("Select Info. Card :") {
                 def cardType = [ "Energy Clock",
                                   "Real Time v3",
@@ -151,11 +120,52 @@ def checkAccessToken() {
                                   "Energy Book"]
                 input name: "selectedCards", type: "enum", title: "asfa", multiple: true, options: cardType, submitOnChange: true, required: false   
             }*/
-                            
-        }
+
     }
 }
 
+def installPage() {
+    /* Select API server version */    
+    atomicState.env_mode ="prod"
+
+    def lang = clientLocale?.language
+
+    /* getting language settings of user's device.  */
+    atomicState.language = "ko"
+
+    /* create tanslation for descriptive and informative strings that can be seen by users. */
+    if (!state.languageString) {
+        createLocaleStrings() 
+    }
+
+    if (!state.accessToken) {
+        log.debug "checkAccessToken>> SmartThings Access Token does not exist."
+        createAccessToken()
+    }
+    def redirectUrl = "https://graph.api.smartthings.com/oauth/initialize?appId=${app.id}&access_token=${state.accessToken}&apiServerUrl=${getApiServerUrl()}"
+    
+    if (!atomicState.encoredAccessToken) {
+        /* These lines will start the OAuth process.\n*/
+        log.debug "checkAccessToken>> Start OAuth request: " + redirectUrl
+        return dynamicPage(name: "installPage", install: true,  uninstall: true) {
+            section{
+                paragraph state.languageString."${atomicState.language}".desc1
+                href(title: state.languageString."${atomicState.language}".main,
+                     description: state.languageString."${atomicState.language}".desc2,
+                     required: false,
+                     style:"embedded",
+                     url: redirectUrl)
+            }
+        }
+    } else {
+    	return mainPage()
+    }
+}
+
+def reinstall() {
+	atomicState.encoredAccessToken = ""
+    return installPage()
+}
 //////////////
 // ST method
 def installed() {
