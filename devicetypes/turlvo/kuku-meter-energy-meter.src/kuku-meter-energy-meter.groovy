@@ -19,6 +19,8 @@ metadata {
         capability "Power Meter"
         capability "Energy Meter"
         capability "Refresh"
+	
+	command "energy"
     }       
     
     preferences {
